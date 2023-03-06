@@ -20,35 +20,6 @@ import models
 from util.config import DictAction, Config
 from util.utils import ModelEma, BestMetricHolder
 
-
-'''
---config_file：配置文件的路径，必需的参数。
---options：一个字典，可以用来覆盖配置文件中的设置。例如，--options key1=value1 key2=value2 表示将 key1 和 key2 的值分别设置为 value1 和 value2。
---dataset_file：数据集名称，默认为 coco。
---coco_path：COCO 数据集的路径，默认为 None。
---remove_difficult：是否从数据集中移除难以识别的目标，默认为 False。
---fix_size：是否将所有图像调整为相同的大小，默认为 False。
---output_dir：结果输出路径，默认为空字符串。
---note：注释，用于记录实验备注，默认为空字符串。
---device：训练和测试时使用的设备，默认为 cuda。
---seed：随机数种子，默认为 42。
---resume：恢复训练时的检查点路径，默认为空字符串。
---pretrain_model_path：用于加载其他模型的预训练模型路径，默认为 None。
---finetune_ignore：对于微调的模型，需要忽略的层，默认为 None。
---start_epoch：起始 epoch，默认为 0。
---eval：是否在测试集上进行评估，默认为 False。
---num_workers：用于数据加载的进程数，默认为 0，表示不使用多进程。
---test：是否在测试模式下运行，默认为 False。
---debug：是否开启调试模式，默认为 False。
---find_unused_params：是否检查未使用的模型参数，默认为 False。
---save_results：是否保存结果，默认为 False。
---save_log：是否保存日志，默认为 False。
---world_size：分布式训练的进程数，默认为 1。
---dist_url：用于设置分布式训练的 URL，默认为 env://。
---rank：当前进程的排名，默认为 0。
---local_rank：用于 DistributedDataParallel 的本地进程排名。
---amp：是否使用混合精度训练，默认为 False。
-'''
 def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
     parser.add_argument('--config_file', '-c', type=str, required=True)
